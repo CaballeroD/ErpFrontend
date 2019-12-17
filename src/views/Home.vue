@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <DarkLayout/>
+    <Pedidos />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import DarkLayout from "@/components/DarkLayout.vue";
+import Pedidos from "@/components/Pedidos.vue";
 
 export default {
   name: "home",
   components: {
-    DarkLayout
+    Pedidos
   }
 };
 </script>
