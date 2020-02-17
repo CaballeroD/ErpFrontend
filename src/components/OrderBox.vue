@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" align="alignment">
+  <v-row justify="center">
     <v-expansion-panels
       :accordion="accordion"
       :popout="popout"
@@ -9,9 +9,9 @@
       :disabled="disabled"
       :readonly="readonly"
     >
-      <v-expansion-panel v-for="(item,i) in 5" :key="i">
-        <v-expansion-panel-header>Item</v-expansion-panel-header>
-        <v-expansion-panel-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-expansion-panel-content>
+      <v-expansion-panel v-for="(item,i) in this.varibleDelGetDeLaApi.length" :key="i">
+        <v-expansion-panel-header>__VariableDelArtículoDeLaApi__</v-expansion-panel-header>
+        <v-expansion-panel-content></v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
   </v-row>
@@ -20,6 +20,7 @@
 export default {
   name: "orderbox",
   data: () => ({
+    varibleDelGetDeLaApi: 0,
     accordion: false,
     popout: false,
     inset: false,
@@ -27,6 +28,23 @@ export default {
     disabled: false,
     readonly: false,
     focusable: true
-  })
+  }),
+  methods: {
+    obtainNumberPedidos() {
+      fetch("http://localhost:3000/pedidos", {
+        method: "GET",
+        body: JSON.stringify(this.pedido)
+      })
+        .then(res => res.json())
+        .then(data => {
+          this.varibleDelGetDeLaApi = data;
+          console.log(data);
+          console.log(data.length);
+        });
+    }
+  },
+  mounted() {
+    this.obtainNumberPedidos();
+  }
 };
 </script>
