@@ -12,8 +12,9 @@
 
 <script>
 class Pedido {
-  constructor(articulo) {
+  constructor(articulo, fecha) {
     this.articulo = articulo;
+    this.fecha = fecha;
   }
 }
 export default {
@@ -24,7 +25,20 @@ export default {
   }),
 
   methods: {
+    addDate() {
+      let date = new Date();
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+
+      if (month < 10) {
+        this.pedido.fecha = day + "-" + "0" + month + "-" + year;
+      } else {
+        this.pedido.fecha = day + "-" + month + "-" + year;
+      }
+    },
     addPedido() {
+      this.addDate();
       console.log(this.pedido);
       fetch("http://localhost:3000/pedidos", {
         method: "POST",

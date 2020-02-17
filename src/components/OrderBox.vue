@@ -9,8 +9,8 @@
       :disabled="disabled"
       :readonly="readonly"
     >
-      <v-expansion-panel v-for="(item,i) in this.varibleDelGetDeLaApi.length" :key="i">
-        <v-expansion-panel-header>__VariableDelArtículoDeLaApi__</v-expansion-panel-header>
+      <v-expansion-panel v-for="(item,i) in this.varibleDelGetDeLaApi" :key="i">
+        <v-expansion-panel-header>{{ item.articulo }}</v-expansion-panel-header>
         <v-expansion-panel-content></v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
