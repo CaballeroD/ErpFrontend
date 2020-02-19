@@ -11,7 +11,7 @@
       class="windowSize"
     >
       <v-expansion-panel
-        v-for="(item,i) in this.varibleDelGetDeLaApi"
+        v-for="(item,i) in this.articulosPedido"
         :key="i"
         class="d-inline-flex justify-space-between"
       >
@@ -19,12 +19,12 @@
           <v-expansion-panel-header class="d-inline-flex justify-space-between">
             <p>Pedido número: {{ i }}</p>
             <p>Fecha:{{ item.fecha }}</p>
+            <p>Id:{{ item._id }}</p>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
             <div class="pt-4">
-              <p>Precio del artículo: {{ item.precio }}</p>
-              <p>Nombre del artículo: {{ item.articulo }}</p>
-              <p>Id del pedido: {{ item._id }}</p>
+              <p>Precio del artículo: {{ item.preciosArray }} €</p>
+              <p>Nombre del artículo: {{ item.articulosArray }}</p>
             </div>
           </v-expansion-panel-content>
         </div>
@@ -47,7 +47,7 @@
 export default {
   name: "orderbox",
   data: () => ({
-    varibleDelGetDeLaApi: 0,
+    articulosPedido: 0,
     accordion: false,
     popout: false,
     inset: false,
@@ -64,9 +64,7 @@ export default {
       })
         .then(res => res.json())
         .then(data => {
-          this.varibleDelGetDeLaApi = data;
-          console.log(data);
-          console.log(data.length);
+          this.articulosPedido = data;
         });
     }
   },

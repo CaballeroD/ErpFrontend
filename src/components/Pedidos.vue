@@ -1,18 +1,18 @@
 <template>
   <v-content>
     <v-container>
-      <OrderBox />
+      <InterfazPedido />
     </v-container>
   </v-content>
 </template>
 
 <script>
-import OrderBox from "@/components/OrderBox.vue";
+import InterfazPedido from "@/components/InterfazPedido.vue";
 
 export default {
   name: "Pedidos",
   components: {
-    OrderBox
+    InterfazPedido
   }
 };
 </script>
