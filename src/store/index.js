@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     articulosArrayApi: [],
-    comboBoxSelectedArticulos: []
+    comboBoxSelectedArticulos: [],
+    InfoPedidosList: []
   },
   mutations: {
     setComboBoxSelectedArticulos(state, articulos) {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     fillArticulos(state, articulos) {
       state.articulosArrayApi = articulos;
+    },
+    fillInfoPedidosList(state, pedidos) {
+      state.InfoPedidosList = pedidos;
     }
   },
   actions: {
@@ -32,6 +36,14 @@ export default new Vuex.Store({
       })
       const articulos = await data.json();
       commit('fillArticulos', articulos)
+    },
+    obtenerInfoPedidosList: async function ({ commit }) {
+      const data = await fetch("http://localhost:3000/pedidos", {
+        method: "GET",
+        body: JSON.stringify(this.pedido)
+      })
+      const pedidos = await data.json();
+      commit('fillInfoPedidosList', pedidos)
     }
   },
   modules: {}

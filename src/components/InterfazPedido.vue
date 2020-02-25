@@ -11,9 +11,9 @@
       class="windowSize"
     >
       <v-expansion-panel
-        v-for="(item,i) in this.articulosPedido"
+        v-for="(item,i) in this.InfoPedidosList"
         :key="i"
-        class="d-inline-flex justify-space-between"
+        class="justify-space-between"
       >
         <div class="windowSizeHeader">
           <v-expansion-panel-header class="d-inline-flex justify-space-between">
@@ -21,33 +21,34 @@
             <p>Fecha:{{ item.fecha }}</p>
             <p>Id:{{ item._id }}</p>
           </v-expansion-panel-header>
-          <v-expansion-panel-content>
-            <div class="pt-4">
-              <p>Precio del artículo: {{ item.preciosArray }} €</p>
-              <p>Nombre del artículo: {{ item.articulosArray }}</p>
-            </div>
-          </v-expansion-panel-content>
         </div>
-        <div class="d-flex pt-4">
-          <v-btn class="mx-2" fab dark x-small color="blue">
-            <v-icon dark>mdi-minus</v-icon>
-          </v-btn>
-          <v-btn class="mx-2" fab dark x-small color="green">
-            <v-icon dark>mdi-minus</v-icon>
-          </v-btn>
-          <v-btn class="mx-2" fab dark x-small color="red">
-            <v-icon dark>mdi-minus</v-icon>
-          </v-btn>
-        </div>
+        <v-expansion-panel-content>
+          <div
+            class="ma-2 d-inline-flex flex-column flex-wrap"
+            v-for="(aux,j) in item.articulosArray"
+            :key="j"
+          >
+            <span>Nombre: {{aux.nombre}}</span>
+            <span>Precio: {{aux.precio}}</span>
+            <span>Unidades: 0</span>
+          </div>
+        </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
   </v-row>
 </template>
 <script>
+//import ButtonsListPedidos from "@/components/ListPedidos/ButtonsListPedidos.vue";
+import Vue from "vue";
+import Vuex from "vuex";
+
+Vue.use(Vuex);
 export default {
+  /*components: {
+    ButtonsListPedidos
+  },*/
   name: "orderbox",
   data: () => ({
-    articulosPedido: 0,
     accordion: false,
     popout: false,
     inset: false,
@@ -57,19 +58,14 @@ export default {
     focusable: true
   }),
   methods: {
-    obtainNumberPedidos() {
-      fetch("http://localhost:3000/pedidos", {
-        method: "GET",
-        body: JSON.stringify(this.pedido)
-      })
-        .then(res => res.json())
-        .then(data => {
-          this.articulosPedido = data;
-        });
-    }
+    ...Vuex.mapMutations(["fillInfoPedidosList"]),
+    ...Vuex.mapActions(["obtenerInfoPedidosList"])
   },
-  mounted() {
-    this.obtainNumberPedidos();
+  computed: {
+    ...Vuex.mapState(["InfoPedidosList"])
+  },
+  async created() {
+    await this.obtenerInfoPedidosList();
   }
 };
 </script>

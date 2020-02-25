@@ -14,14 +14,7 @@ export default {
     name: ""
   }),
 
-  methods: {
-    deleteAllPedidos() {
-      fetch("http://localhost:3000/pedidos/deleteall", {
-        method: "DELETE",
-        body: JSON.stringify(this.pedido)
-      });
-    }
-  }
+  methods: {}
 };
 
 /**/

@@ -15,6 +15,7 @@
             multiple
           ></v-autocomplete>
           <v-btn small color="green" @click="sendArticulos">Enviar</v-btn>
+          <v-btn small color="red" @click="deleteAllPedidos">Borrar Todo</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -50,9 +51,16 @@ export default {
       "resetComboBoxSelectedArticulos"
     ]),
     ...Vuex.mapActions(["obtenerArticulos"]),
+    //Rellena el menú de opciones del selector
     fillAllAticulos() {
       this.articulosArrayApi.forEach(element => {
         this.items.push(element.nombre);
+      });
+    },
+    deleteAllPedidos() {
+      fetch("http://localhost:3000/pedidos/deleteall", {
+        method: "DELETE",
+        body: JSON.stringify(this.pedido)
       });
     },
     sendArticulos() {
@@ -61,6 +69,7 @@ export default {
       this.addDate();
       this.addPedido();
       this.resetComboBoxSelectedArticulos();
+      this.values = [];
     },
     addDate() {
       let date = new Date();
