@@ -6,10 +6,12 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     articulosArrayApi: [],
+    //creo que esto sobra
     comboBoxSelectedArticulos: [],
     InfoPedidosList: []
   },
   mutations: {
+    //No debería hacer falta ahora
     setComboBoxSelectedArticulos(state, articulos) {
       const aux = articulos;
       state.articulosArrayApi.forEach(element => {
@@ -18,6 +20,7 @@ export default new Vuex.Store({
         }
       });
     },
+    //No debería hacer falta ahora
     resetComboBoxSelectedArticulos(state) {
       state.comboBoxSelectedArticulos = [];
     },
