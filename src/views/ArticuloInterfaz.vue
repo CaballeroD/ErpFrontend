@@ -1,13 +1,13 @@
 <template>
-  <PedidoTabla></PedidoTabla>
+  <CrearArticulo></CrearArticulo>
 </template>
 
 <script>
-import PedidoTabla from "@/components/AddPedido/PedidoTabla.vue";
+import CrearArticulo from "@/components/InterfazArticulos/CrearArticulo.vue";
 
 export default {
   components: {
-    PedidoTabla
+    CrearArticulo
   },
   data: () => ({
     valid: true,

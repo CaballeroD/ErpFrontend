@@ -6,7 +6,7 @@
           <v-dialog v-model="dialog" max-width="500px">
             <template v-slot:activator="{ on }">
               <div class="d-flex justify-end align-center tam">
-                <v-btn color="primary" dark class="ma-2" v-on="on">Nuevo Pedido</v-btn>
+                <v-btn color="primary" dark class="ma-2" v-on="on">Nuevo Articulo</v-btn>
                 <v-btn color="primary" dark class="ma-2" @click="refreshArticulos">Refrescar</v-btn>
               </div>
             </template>
@@ -53,13 +53,6 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-/*class Articulo {
-  constructor(nombre, precio, proveedor) {
-    this.nombre = nombre;
-    this.precio = precio;
-    this.proveedor = proveedor;
-  }
-}*/
 export default {
   data: () => ({
     dialog: false,

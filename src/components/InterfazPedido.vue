@@ -30,7 +30,7 @@
           >
             <span>Nombre: {{aux.nombre}}</span>
             <span>Precio: {{aux.precio}}</span>
-            <span>Unidades: 0</span>
+            <span>Unidades: {{aux.cantidad}}</span>
           </div>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -38,15 +38,11 @@
   </v-row>
 </template>
 <script>
-//import ButtonsListPedidos from "@/components/ListPedidos/ButtonsListPedidos.vue";
 import Vue from "vue";
 import Vuex from "vuex";
 
 Vue.use(Vuex);
 export default {
-  /*components: {
-    ButtonsListPedidos
-  },*/
   name: "orderbox",
   data: () => ({
     accordion: false,
@@ -69,11 +65,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.windowSize {
-  width: 70%;
-}
-.windowSizeHeader {
-  width: 100%;
-}
-</style>
