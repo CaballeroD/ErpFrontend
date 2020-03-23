@@ -14,7 +14,7 @@
       </v-card-title>
       <v-data-table
         :headers="headers"
-        :items="desserts"
+        :items="articulos"
         :search="search"
         item-key="name"
         :sort-by="['proveedor','nombre','precio']"
@@ -26,10 +26,10 @@
             :return-value.sync="props.item.cantidad"
             large
             persistent
-            @save="save(props.item)"
-            @cancel="cancel"
-            @open="open"
-            @close="close"
+            @save="save()"
+            @cancel="cancel()"
+            @open="open(props.item)"
+            @close="close(props.item)"
           >
             <div>{{ props.item.cantidad }}</div>
             <template v-slot:input>
@@ -88,7 +88,7 @@ export default {
         { text: "Precio", value: "precio" },
         { text: "Cantidad", value: "cantidad" }
       ],
-      desserts: []
+      articulos: []
     };
   },
   methods: {
@@ -96,7 +96,7 @@ export default {
     ...Vuex.mapActions(["obtenerArticulos"]),
     setArticulos() {
       this.articulosArrayApi.forEach(element => {
-        this.desserts.push({
+        this.articulos.push({
           _id: element._id,
           nombre: element.nombre,
           precio: element.precio,
@@ -119,8 +119,8 @@ export default {
     },
     sendPedido() {
       let aux = [];
-      this.desserts.forEach(element => {
-        if (element.cantidad != 0) {
+      this.articulos.forEach(element => {
+        if (element.cantidad != 0 && element.cantidad != "") {
           aux.push(element);
         }
         this.addDate();
@@ -136,8 +136,7 @@ export default {
         }
       }).then(res => res.json());
     },
-    save(item) {
-      console.log(item);
+    save() {
       this.snack = true;
       this.snackColor = "success";
       this.snackText = "Data saved";
@@ -147,12 +146,15 @@ export default {
       this.snackColor = "error";
       this.snackText = "Canceled";
     },
-    open() {
+    open(item) {
+      if (item.cantidad == 0) item.cantidad = "";
       this.snack = true;
       this.snackColor = "info";
       this.snackText = "Dialog opened";
     },
-    close() {
+    close(item) {
+      console.log(item.cantidad);
+      if (item.cantidad == "") item.cantidad = 0;
       console.log("Dialog closed");
     }
   },

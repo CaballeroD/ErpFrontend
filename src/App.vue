@@ -4,34 +4,42 @@
       <v-list dense>
         <v-list-item link to="/">
           <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
+            <v-icon>mdi-ballot</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Pedidos</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link to="/about">
+        <v-list-item link to="/mostrarPedidosRecibidos">
           <v-list-item-action>
-            <v-icon>mdi-settings</v-icon>
+            <v-icon>mdi-briefcase-check</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Pedidos Recibidos</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item link to="/agregarPedido">
+          <v-list-item-action>
+            <v-icon>mdi-briefcase-edit</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Crear Pedido</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item link to="/articuloInterfaz">
           <v-list-item-action>
-            <v-icon>mdi-settings</v-icon>
+            <v-icon>mdi-circle-edit-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Administrar Artículos</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link to="/agregarPedido">
+        <v-list-item link to="/mostarPersonal">
           <v-list-item-action>
-            <v-icon>mdi-settings</v-icon>
+            <v-icon>mdi-account</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Crear Pedido</v-list-item-title>
+            <v-list-item-title>Administrar Personal</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>

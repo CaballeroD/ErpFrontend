@@ -1,17 +1,17 @@
 <template>
-  <loquesea></loquesea>
+  <AgregarPedidoInterfaz></AgregarPedidoInterfaz>
 </template>
 
 <script>
-import loquesea from "@/components/AddPedido/loquesea.vue";
+import AgregarPedidoInterfaz from "@/components/AddPedido/AgregarPedidoInterfaz.vue";
 
 export default {
   components: {
-    loquesea
+    AgregarPedidoInterfaz
   },
   data: () => ({
     valid: true,
-    name: "loquesea"
+    name: "AgregarPedidoInterfaz"
   }),
 
   methods: {}

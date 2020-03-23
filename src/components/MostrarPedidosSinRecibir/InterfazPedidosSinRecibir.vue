@@ -1,0 +1,62 @@
+<template>
+  <v-row justify="center">
+    <v-expansion-panels
+      :accordion="accordion"
+      :popout="popout"
+      :inset="inset"
+      :multiple="multiple"
+      :focusable="focusable"
+      :disabled="disabled"
+      :readonly="readonly"
+      class="windowSize"
+    >
+      <v-expansion-panel v-for="(item,i) in this.InfoPedidosList" :key="i">
+        <v-expansion-panel-header class="d-flex">
+          <p>Pedido número: {{ i }}</p>
+          <p>Fecha:{{ item.fecha }}</p>
+          <v-checkbox :label="`Recibido`" color="#ffffff"></v-checkbox>
+        </v-expansion-panel-header>
+
+        <v-expansion-panel-content>
+          <div
+            class="ma-2 d-inline-flex flex-column flex-wrap"
+            v-for="(aux,j) in item.articulosArray"
+            :key="j"
+          >
+            <span>Nombre: {{aux.nombre}}</span>
+            <span>Precio: {{aux.precio}}</span>
+            <span>Unidades: {{aux.cantidad}}</span>
+          </div>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
+  </v-row>
+</template>
+<script>
+import Vue from "vue";
+import Vuex from "vuex";
+
+Vue.use(Vuex);
+export default {
+  name: "orderbox",
+  data: () => ({
+    accordion: false,
+    popout: false,
+    inset: false,
+    multiple: false,
+    disabled: false,
+    readonly: false,
+    focusable: true
+  }),
+  methods: {
+    ...Vuex.mapMutations(["fillInfoPedidosList"]),
+    ...Vuex.mapActions(["obtenerInfoPedidosList"])
+  },
+  computed: {
+    ...Vuex.mapState(["InfoPedidosList"])
+  },
+  async created() {
+    await this.obtenerInfoPedidosList();
+  }
+};
+</script>
