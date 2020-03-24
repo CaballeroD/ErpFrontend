@@ -10,11 +10,17 @@
       :readonly="readonly"
       class="windowSize"
     >
-      <v-expansion-panel v-for="(item,i) in this.InfoPedidosList" :key="i">
-        <v-expansion-panel-header class="d-flex">
-          <p>Pedido número: {{ i }}</p>
-          <p>Fecha:{{ item.fecha }}</p>
-          <v-checkbox :label="`Recibido`" color="#ffffff"></v-checkbox>
+      <v-expansion-panel v-for="(item,i) in this.pedidosRecibidos" :key="i">
+        <v-expansion-panel-header class="d-flex align-self-center">
+          <p class="mb-1">Pedido número: {{ i }}</p>
+          <p class="mb-1">Fecha:{{ item.fecha }}</p>
+          <v-checkbox
+            @change="comprobarPedidos(item)"
+            v-model="item.recibido"
+            class="mr-10"
+            :label="`Recibido`"
+            color="#ffffff"
+          ></v-checkbox>
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
@@ -40,6 +46,8 @@ Vue.use(Vuex);
 export default {
   name: "orderbox",
   data: () => ({
+    pedidosRecibidos: [],
+    snackbar: false,
     accordion: false,
     popout: false,
     inset: false,
@@ -49,6 +57,21 @@ export default {
     focusable: true
   }),
   methods: {
+    comprobarPedidos(item) {
+      console.log(item.recibido);
+    },
+    //añade a los pedidos la variable recibido.
+    setComprobarPedidos() {
+      this.InfoPedidosList.forEach(element => {
+        this.pedidosRecibidos.push({
+          _id: element._id,
+          fecha: element.fecha,
+          articulosArray: element.articulosArray,
+          recibido: false
+        });
+      });
+    },
+
     ...Vuex.mapMutations(["fillInfoPedidosList"]),
     ...Vuex.mapActions(["obtenerInfoPedidosList"])
   },
@@ -57,6 +80,7 @@ export default {
   },
   async created() {
     await this.obtenerInfoPedidosList();
+    await this.setComprobarPedidos();
   }
 };
 </script>
