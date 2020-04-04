@@ -10,20 +10,8 @@ export default new Vuex.Store({
     comboBoxSelectedArticulos: [],
     InfoPedidosList: []
   },
+
   mutations: {
-    //No debería hacer falta ahora
-    setComboBoxSelectedArticulos(state, articulos) {
-      const aux = articulos;
-      state.articulosArrayApi.forEach(element => {
-        if (aux.includes(element.nombre)) {
-          state.comboBoxSelectedArticulos.push(element);
-        }
-      });
-    },
-    //No debería hacer falta ahora
-    resetComboBoxSelectedArticulos(state) {
-      state.comboBoxSelectedArticulos = [];
-    },
     fillArticulos(state, articulos) {
       state.articulosArrayApi = articulos;
     },

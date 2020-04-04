@@ -1,59 +1,117 @@
 <template>
   <div>
-    <v-card>
-      <v-card-title>
-        Artículos
-        <v-spacer></v-spacer>
-        <v-text-field
-          v-model="search"
-          append-icon="mdi-magnify"
-          label="Search"
-          single-line
-          hide-details
-        ></v-text-field>
-      </v-card-title>
-      <v-data-table
-        :headers="headers"
-        :items="articulos"
-        :search="search"
-        item-key="name"
-        :sort-by="['proveedor','nombre','precio']"
-        :sort-desc="[false, false, false]"
-        multi-sort
-      >
-        <template v-slot:item.cantidad="props">
-          <v-edit-dialog
-            :return-value.sync="props.item.cantidad"
-            large
-            persistent
-            @save="save()"
-            @cancel="cancel()"
-            @open="open(props.item)"
-            @close="close(props.item)"
-          >
-            <div>{{ props.item.cantidad }}</div>
-            <template v-slot:input>
-              <div class="mt-4 title">Update cantidad</div>
-            </template>
-            <template v-slot:input>
-              <v-text-field
-                v-model="props.item.cantidad"
-                :rules="[max25chars]"
-                label="Edit"
-                single-line
-                counter
-                autofocus
-              ></v-text-field>
-            </template>
-          </v-edit-dialog>
-        </template>
-      </v-data-table>
-    </v-card>
-    <v-snackbar v-model="snack" :timeout="3000" :color="snackColor">
-      {{ snackText }}
-      <v-btn text @click="snack = false">Close</v-btn>
-    </v-snackbar>
-    <v-btn @click="sendPedido">Enviar</v-btn>
+    <div v-if="!this.editar">
+      <v-card>
+        <v-card-title>
+          Artículos sin Editar
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
+          :headers="headers"
+          :items="articulos"
+          :search="search"
+          item-key="name"
+          :sort-by="['proveedor','nombre','precio']"
+          :sort-desc="[false, false, false]"
+          multi-sort
+        >
+          <template v-slot:item.cantidad="props">
+            <v-edit-dialog
+              :return-value.sync="props.item.cantidad"
+              large
+              persistent
+              @save="save()"
+              @cancel="cancel()"
+              @open="open(props.item)"
+              @close="close(props.item)"
+            >
+              <div>{{ props.item.cantidad }}</div>
+              <template v-slot:input>
+                <div class="mt-4 title">Update cantidad</div>
+              </template>
+              <template v-slot:input>
+                <v-text-field
+                  v-model="props.item.cantidad"
+                  :rules="[max25chars]"
+                  label="Edit"
+                  single-line
+                  counter
+                  autofocus
+                ></v-text-field>
+              </template>
+            </v-edit-dialog>
+          </template>
+        </v-data-table>
+      </v-card>
+      <v-snackbar v-model="snack" :timeout="3000" :color="snackColor">
+        {{ snackText }}
+        <v-btn text @click="snack = false">Close</v-btn>
+      </v-snackbar>
+      <v-btn @click="sendPedido">Enviar</v-btn>
+    </div>
+    <div v-else>
+      <v-card>
+        <v-card-title>
+          Artículos editando
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
+          :headers="headers"
+          :items="articulos"
+          :search="search"
+          item-key="name"
+          :sort-by="['proveedor','nombre','precio']"
+          :sort-desc="[false, false, false]"
+          multi-sort
+        >
+          <template v-slot:item.cantidad="props">
+            <v-edit-dialog
+              :return-value.sync="props.item.cantidad"
+              large
+              persistent
+              @save="save()"
+              @cancel="cancel()"
+              @open="open(props.item)"
+              @close="close(props.item)"
+            >
+              <div>{{ props.item.cantidad }}</div>
+              <template v-slot:input>
+                <div class="mt-4 title">Update cantidad</div>
+              </template>
+              <template v-slot:input>
+                <v-text-field
+                  v-model="props.item.cantidad"
+                  :rules="[max25chars]"
+                  label="Edit"
+                  single-line
+                  counter
+                  autofocus
+                ></v-text-field>
+              </template>
+            </v-edit-dialog>
+          </template>
+        </v-data-table>
+      </v-card>
+      <v-snackbar v-model="snack" :timeout="3000" :color="snackColor">
+        {{ snackText }}
+        <v-btn text @click="snack = false">Close</v-btn>
+      </v-snackbar>
+      <v-btn @click="sendPedido">Enviar</v-btn>
+    </div>
   </div>
 </template>
 
@@ -72,6 +130,7 @@ Vue.use(Vuex);
 export default {
   data() {
     return {
+      editar: false,
       pedido: new Pedido(),
       search: "",
       snack: false,
@@ -104,6 +163,41 @@ export default {
           cantidad: 0
         });
       });
+    },
+    setArticulosEdit() {
+      this.$route.params.parametro.articulosArray.forEach(element => {
+        this.articulos.push({
+          _id: element._id,
+          nombre: element.nombre,
+          precio: element.precio,
+          proveedor: element.proveedor,
+          cantidad: element.cantidad
+        });
+      });
+      let aux = [];
+      this.articulos.forEach(element => {
+        aux.push(element._id);
+      });
+      console.log(aux);
+      this.articulosArrayApi.forEach(element => {
+        if (!aux.includes(element._id)) {
+          this.articulos.push({
+            _id: element._id,
+            nombre: element.nombre,
+            precio: element.precio,
+            proveedor: element.proveedor,
+            cantidad: 0
+          });
+        }
+      });
+
+      console.log("valor artículos");
+      console.log(this.articulos);
+    },
+    editarPedidoPendiente() {
+      if (this.$route.params.parametro) {
+        this.editar = true;
+      }
     },
     addDate() {
       let date = new Date();
@@ -153,7 +247,6 @@ export default {
       this.snackText = "Dialog opened";
     },
     close(item) {
-      console.log(item.cantidad);
       if (item.cantidad == "") item.cantidad = 0;
       console.log("Dialog closed");
     }
@@ -163,7 +256,9 @@ export default {
   },
   async created() {
     await this.obtenerArticulos();
-    await this.setArticulos();
+    await this.editarPedidoPendiente();
+    if (!this.editar) await this.setArticulos();
+    else await this.setArticulosEdit();
   }
 };
 </script>
