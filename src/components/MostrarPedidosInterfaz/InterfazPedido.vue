@@ -69,6 +69,23 @@ export default {
     enviarPedido(item) {
       console.log(item);
       console.log("Enviar pedido");
+      fetch("http://localhost:3000/pedidosRecibidos/", {
+        method: "POST",
+        body: JSON.stringify(item),
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json"
+        }
+      });
+      let url = "http://localhost:3000/pedidos/" + item._id;
+      fetch(url, {
+        method: "DELETE",
+        body: JSON.stringify(this.pedido),
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json"
+        }
+      });
     },
     ...Vuex.mapMutations(["fillInfoPedidosList"]),
     ...Vuex.mapActions(["obtenerInfoPedidosList"])

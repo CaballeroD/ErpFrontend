@@ -110,7 +110,8 @@
         {{ snackText }}
         <v-btn text @click="snack = false">Close</v-btn>
       </v-snackbar>
-      <v-btn @click="sendPedido">Enviar</v-btn>
+      <v-btn @click="sendPedido">Confirmar</v-btn>
+      <v-btn @click="cancelPedido">Cancelar</v-btn>
     </div>
   </div>
 </template>
@@ -122,6 +123,7 @@ class Pedido {
     this.articulosArray = articulosArray;
   }
 }
+
 import Vue from "vue";
 import Vuex from "vuex";
 
@@ -178,7 +180,6 @@ export default {
       this.articulos.forEach(element => {
         aux.push(element._id);
       });
-      console.log(aux);
       this.articulosArrayApi.forEach(element => {
         if (!aux.includes(element._id)) {
           this.articulos.push({
@@ -190,9 +191,6 @@ export default {
           });
         }
       });
-
-      console.log("valor artículos");
-      console.log(this.articulos);
     },
     editarPedidoPendiente() {
       if (this.$route.params.parametro) {
@@ -220,7 +218,24 @@ export default {
         this.addDate();
         this.pedido.articulosArray = aux;
       });
-      console.log(this.pedido);
+      if (this.editar) {
+        let url =
+          "http://localhost:3000/pedidos/" + this.$route.params.parametro._id;
+        fetch(url, {
+          method: "DELETE",
+          body: JSON.stringify(this.pedido),
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json"
+          }
+        })
+          .then(res => res.json())
+          .then(
+            this.$router.push({
+              name: "MostrarPedidos"
+            })
+          );
+      }
       fetch("http://localhost:3000/pedidos", {
         method: "POST",
         body: JSON.stringify(this.pedido),
@@ -228,27 +243,38 @@ export default {
           Accept: "application/json",
           "Content-type": "application/json"
         }
-      }).then(res => res.json());
+      })
+        .then(res => res.json())
+        .then(
+          this.articulos.forEach(element => {
+            element.cantidad = 0;
+          })
+        )
+        .then(this.openSnack(true, "success", "Enviado con éxito"));
+    },
+    openSnack(abierto, color, mensaje) {
+      this.snack = abierto;
+      this.snackColor = color;
+      this.snackText = mensaje;
     },
     save() {
-      this.snack = true;
-      this.snackColor = "success";
-      this.snackText = "Data saved";
+      this.openSnack(true, "success", "Data saved");
     },
     cancel() {
-      this.snack = true;
-      this.snackColor = "error";
-      this.snackText = "Canceled";
+      this.openSnack(true, "error", "Canceled");
     },
     open(item) {
       if (item.cantidad == 0) item.cantidad = "";
-      this.snack = true;
-      this.snackColor = "info";
-      this.snackText = "Dialog opened";
+      this.openSnack(true, "info", "Dialog opened");
     },
     close(item) {
       if (item.cantidad == "") item.cantidad = 0;
       console.log("Dialog closed");
+    },
+    cancelPedido() {
+      this.$router.push({
+        name: "MostrarPedidos"
+      });
     }
   },
   computed: {
