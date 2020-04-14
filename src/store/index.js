@@ -8,7 +8,8 @@ export default new Vuex.Store({
     articulosArrayApi: [],
     //creo que esto sobra
     comboBoxSelectedArticulos: [],
-    InfoPedidosList: []
+    InfoPedidosList: [],
+    NoRecibidosList: []
   },
 
   mutations: {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
     },
     fillInfoPedidosList(state, pedidos) {
       state.InfoPedidosList = pedidos;
+    },
+    fillPedidosNoRecibidosList(state, pedidos) {
+      state.NoRecibidosList = pedidos;
     }
   },
   actions: {
@@ -35,6 +39,14 @@ export default new Vuex.Store({
       })
       const pedidos = await data.json();
       commit('fillInfoPedidosList', pedidos)
+    },
+    obtenerPedidosNoRecibidosList: async function ({ commit }) {
+      const data = await fetch("http://localhost:3000/pedidosRecibidos", {
+        method: "GET",
+        body: JSON.stringify(this.pedido)
+      })
+      const pedidos = await data.json();
+      commit('fillPedidosNoRecibidosList', pedidos)
     }
   },
   modules: {}
