@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
-        <v-list-item link to="/">
+        <v-list-item link to="/mostrarPedidos">
           <v-list-item-action>
             <v-icon>mdi-ballot</v-icon>
           </v-list-item-action>
