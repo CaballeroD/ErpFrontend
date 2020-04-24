@@ -9,12 +9,17 @@ export default new Vuex.Store({
     //creo que esto sobra
     comboBoxSelectedArticulos: [],
     InfoPedidosList: [],
-    NoRecibidosList: []
+    NoRecibidosList: [],
+    logued: false
   },
 
   mutations: {
     fillArticulos(state, articulos) {
       state.articulosArrayApi = articulos;
+    },
+    changeLogued(state) {
+      state.logued = !state.logued;
+      console.log("Me ejecuto")
     },
     fillInfoPedidosList(state, pedidos) {
       state.InfoPedidosList = pedidos;

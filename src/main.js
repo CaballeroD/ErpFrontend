@@ -22,17 +22,14 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-firebase.auth().onAuthStateChanged(function (user) {
-  console.log(user)
-  new Vue({
-    router,
-    store,
-    vuetify,
-    render: h => h(App)
-  }).$mount("#app");
 
+new Vue({
+  router,
+  store,
+  vuetify,
+  render: h => h(App)
+}).$mount("#app");
 
-})
 
 Vue.config.productionTip = false;
 

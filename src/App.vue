@@ -1,6 +1,6 @@
 <template>
-  <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app clipped>
+  <v-app id="app">
+    <v-navigation-drawer v-model="drawer" v-if="this.logued" app clipped>
       <v-list dense>
         <v-list-item link to="/mostrarPedidos">
           <v-list-item-action>
@@ -42,6 +42,14 @@
             <v-list-item-title>Administrar Personal</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item @click="logout">
+          <v-list-item-action>
+            <v-icon>mdi-account</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>LogOut</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -53,18 +61,37 @@
       <router-view />
     </v-content>
     <v-footer app>
-      <span>&copy; 2019</span>
+      <span>&copy; 2020</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import Vue from "vue";
+import Vuex from "vuex";
+import firebase from "firebase";
+
+Vue.use(Vuex);
+
 export default {
   name: "App",
   components: {},
   data: () => ({
     drawer: null
   }),
+  methods: {
+    ...Vuex.mapMutations(["changeLogued"]),
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => this.changeLogued())
+        .then(() => this.$router.replace("login"));
+    }
+  },
+  computed: {
+    ...Vuex.mapState(["logued"])
+  },
   created() {
     this.$vuetify.theme.dark = true;
   }

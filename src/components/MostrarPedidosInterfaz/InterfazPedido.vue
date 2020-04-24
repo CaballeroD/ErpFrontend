@@ -37,13 +37,11 @@
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
-    <a href="#" @click="logout">LogOut</a>
   </v-row>
 </template>
 <script>
 import Vue from "vue";
 import Vuex from "vuex";
-import firebase from "firebase";
 
 Vue.use(Vuex);
 
@@ -67,12 +65,6 @@ export default {
         name: "agregarPedido",
         params: { parametro: item }
       });
-    },
-    logout() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => this.$router.replace("login"));
     },
     enviarPedido(item) {
       console.log(item);
