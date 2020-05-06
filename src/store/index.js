@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import loginModule from "./module/loginModule"
 
 Vue.use(Vuex);
 
@@ -9,18 +10,14 @@ export default new Vuex.Store({
     //creo que esto sobra
     comboBoxSelectedArticulos: [],
     InfoPedidosList: [],
-    NoRecibidosList: [],
-    logued: false
+    NoRecibidosList: []
   },
 
   mutations: {
     fillArticulos(state, articulos) {
       state.articulosArrayApi = articulos;
     },
-    changeLogued(state) {
-      state.logued = !state.logued;
-      console.log("Me ejecuto")
-    },
+
     fillInfoPedidosList(state, pedidos) {
       state.InfoPedidosList = pedidos;
     },
@@ -54,5 +51,7 @@ export default new Vuex.Store({
       commit('fillPedidosNoRecibidosList', pedidos)
     }
   },
-  modules: {}
+  modules: {
+    loginModule
+  }
 });

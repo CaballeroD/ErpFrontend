@@ -68,7 +68,7 @@
 
 <script>
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { mapState } from "vuex";
 import firebase from "firebase";
 
 Vue.use(Vuex);
@@ -80,17 +80,17 @@ export default {
     drawer: null
   }),
   methods: {
-    ...Vuex.mapMutations(["changeLogued"]),
+    ...Vuex.mapMutations(["SetLogued"]),
     logout() {
       firebase
         .auth()
         .signOut()
-        .then(() => this.changeLogued())
+        .then(() => this.SetLogued(false))
         .then(() => this.$router.replace("login"));
     }
   },
   computed: {
-    ...Vuex.mapState(["logued"])
+    ...mapState("loginModule", ["logued"])
   },
   created() {
     this.$vuetify.theme.dark = true;

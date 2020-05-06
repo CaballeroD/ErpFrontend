@@ -5,16 +5,24 @@
         <v-row align="start" justify="center">
           <v-col cols="12" sm="8" md="4">
             <v-card class="elevation-12">
+              <errorUserLog />
               <v-toolbar color="primary" dark flat>
                 <v-toolbar-title>Login form</v-toolbar-title>
                 <v-spacer />
               </v-toolbar>
               <v-card-text>
                 <v-form @submit.prevent="login">
-                  <v-text-field v-model="usuario" label="Login" name="login" type="text" />
+                  <v-text-field
+                    v-on:input="updateUser"
+                    v-model="usuarioAux"
+                    label="Login"
+                    name="login"
+                    type="text"
+                  />
 
                   <v-text-field
-                    v-model="contrasena"
+                    v-on:input="updatePassword"
+                    v-model="contrasenaAux"
                     id="password"
                     label="Password"
                     name="password"
@@ -23,7 +31,7 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn type="submit" color="primary" @click="login">Login</v-btn>
+                <botonInicioSesion />
               </v-card-actions>
             </v-card>
           </v-col>
@@ -36,36 +44,34 @@
 
 <script>
 import Vue from "vue";
-import Vuex from "vuex";
-import firebase from "firebase";
-
+import Vuex, { mapState } from "vuex";
+import errorUserLog from "./ErrorUserLog.vue";
+import botonInicioSesion from "./BotonInicioSesion.vue";
 Vue.use(Vuex);
+
 export default {
-  props: {
-    source: String
+  components: {
+    errorUserLog,
+    botonInicioSesion
   },
   data() {
     return {
-      usuario: "",
-      contrasena: ""
+      usuarioAux: "",
+      contrasenaAux: ""
     };
   },
   methods: {
-    ...Vuex.mapMutations(["changeLogued"]),
-    login() {
-      console.log("hola");
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.usuario, this.contrasena)
-        .then(
-          () => this.$router.replace("MostrarPedidos"),
-          error => console.log(error)
-        )
-        .then(() => this.changeLogued());
+    ...Vuex.mapMutations("loginModule", ["SetUsuario", "SetContrasena"]),
+    updateUser() {
+      this.SetUsuario(this.usuarioAux);
+    },
+    updatePassword() {
+      this.SetContrasena(this.contrasenaAux);
     }
+  },
+  computed: {
+    ...mapState("loginModule", ["usuario", "contrasena"])
   }
 };
 </script>
 
-<style>
-</style>
