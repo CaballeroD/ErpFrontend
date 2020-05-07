@@ -22,8 +22,8 @@ describe("La página de Login", () => {
   });
   it("No te deja iniciar sesión debido a una contraseña o usuario erróneo", () => {
     cy.visit("/login");
-    cy.get('#input-18').type('FalseUser@gmail.com')
-    cy.get('#input-18').should('have.value', 'FalseUser@gmail.com')
+    cy.get('#input-19').type('FalseUser@gmail.com')
+    cy.get('#input-19').should('have.value', 'FalseUser@gmail.com')
     cy.get('#password').type('123456789')
     cy.get('#password').should('have.value', '123456789')
     cy.get('#password').should('have.attr', 'type', 'password')
@@ -33,8 +33,8 @@ describe("La página de Login", () => {
   });
   it("Puedes iniciar sesión sin problemas", () => {
     cy.visit("/login");
-    cy.get('#input-18').type('manolo@gmail.com')
-    cy.get('#input-18').should('have.value', 'manolo@gmail.com')
+    cy.get('#input-19').type('manolo@gmail.com')
+    cy.get('#input-19').should('have.value', 'manolo@gmail.com')
     cy.get('#password').type('123456789')
     cy.get('#password').should('have.value', '123456789')
     cy.get('#password').should('have.attr', 'type', 'password')

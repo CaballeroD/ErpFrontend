@@ -4,10 +4,9 @@
       <v-card class="d-flex justify-center align-center flex-column" max-width="344">
         <v-card-text class="d-flex justify-center align-center flex-column">
           <h1 class="red--text text--lighten-2">Error</h1>
-          <p class="text-center mt-4">
-            El usuario o contraseña ingresada no es correcta.
-            Por favor, inténtelo de nuevo.
-          </p>
+          <p
+            class="text-center mt-4"
+          >El usuario o contraseña ingresada no es correcta.Por favor, inténtelo de nuevo.</p>
         </v-card-text>
         <v-btn color="blue" class="mb-4" max-width="344" @click="changeError">Cerrar</v-btn>
       </v-card>
