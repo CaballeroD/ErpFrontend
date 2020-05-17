@@ -28,9 +28,13 @@ describe("La página de Login", () => {
     cy.get('#password').should('have.value', '123456789')
     cy.get('#password').should('have.attr', 'type', 'password')
     cy.get('.v-card__actions > .v-btn').click()
-    //falta añadir el error
+    cy.get('.v-overlay__content > .v-card').and('be.visible')
+    cy.get('.text-center').contains('El usuario o contraseña ingresada no es correcta.Por favor, inténtelo de nuevo.')
+    cy.get('.mb-4 > .v-btn__content').click()
+    cy.get('.v-overlay__content > .v-card').and('not.be.visible')
     cy.location('pathname').should('not.eq', '/MostrarPedidos')
   });
+
   it("Puedes iniciar sesión sin problemas", () => {
     cy.visit("/login");
     cy.get('#input-19').type('manolo@gmail.com')

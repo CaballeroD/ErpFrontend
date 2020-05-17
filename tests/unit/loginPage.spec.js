@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue, mount } from "@vue/test-utils";
+import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vuex from 'vuex'
 import Vue from 'vue'
 import errorUserLog from "@/components/Login/ErrorUserLog.vue";
