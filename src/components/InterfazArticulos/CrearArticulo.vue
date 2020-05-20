@@ -110,7 +110,6 @@ export default {
       confirm("Are you sure you want to delete this item?") &&
         this.articulos.splice(index, 1);
       const Url = "http://localhost:3000/articulos/" + item._id;
-      console.log(Url);
       fetch(Url, {
         method: "DELETE",
         body: JSON.stringify(this.item),
@@ -136,7 +135,6 @@ export default {
       if (this.editedIndex > -1) {
         Object.assign(this.articulos[this.editedIndex], this.editedItem);
         const Url = "http://localhost:3000/articulos/" + this.editedItem._id;
-        console.log(Url);
 
         fetch(Url, {
           method: "PUT",
