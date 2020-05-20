@@ -87,7 +87,8 @@ export default {
       this.dialog = false;
       this.openSnack(true, "success", "Se ha confirmado la selección");
       let url =
-        "http://localhost:3000/pedidosRecibidos/" + this.pedidoSeleccionado._id;
+        "http://178.62.8.6:3000/pedidosRecibidos/" +
+        this.pedidoSeleccionado._id;
       fetch(url, {
         method: "DELETE",
         body: JSON.stringify(this.pedidoSeleccionado),
@@ -96,7 +97,7 @@ export default {
           "Content-type": "application/json"
         }
       }).then(res => res.json());
-      fetch("http://localhost:3000/pedidosArchivados/", {
+      fetch("http://178.62.8.6:3000/pedidosArchivados/", {
         method: "POST",
         body: JSON.stringify(this.pedidoSeleccionado),
         headers: {

@@ -69,7 +69,7 @@ export default {
     enviarPedido(item) {
       console.log(item);
       console.log("Enviar pedido");
-      fetch("http://localhost:3000/pedidosRecibidos/", {
+      fetch("http://178.62.8.6:3000/pedidosRecibidos/", {
         method: "POST",
         body: JSON.stringify(item),
         headers: {
@@ -77,7 +77,7 @@ export default {
           "Content-type": "application/json"
         }
       });
-      let url = "http://localhost:3000/pedidos/" + item._id;
+      let url = "http://178.62.8.6:3000/pedidos/" + item._id;
       fetch(url, {
         method: "DELETE",
         body: JSON.stringify(this.pedido),

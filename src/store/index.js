@@ -27,7 +27,7 @@ export default new Vuex.Store({
   },
   actions: {
     obtenerArticulos: async function ({ commit }) {
-      const data = await fetch("http://localhost:3000/articulos", {
+      const data = await fetch("http://178.62.8.6:3000/articulos", {
         method: "GET",
         body: JSON.stringify(this.articulo)
       })
@@ -35,7 +35,7 @@ export default new Vuex.Store({
       commit('fillArticulos', articulos)
     },
     obtenerInfoPedidosList: async function ({ commit }) {
-      const data = await fetch("http://localhost:3000/pedidos", {
+      const data = await fetch("http://178.62.8.6:3000/pedidos", {
         method: "GET",
         body: JSON.stringify(this.pedido)
       })
@@ -43,7 +43,7 @@ export default new Vuex.Store({
       commit('fillInfoPedidosList', pedidos)
     },
     obtenerPedidosNoRecibidosList: async function ({ commit }) {
-      const data = await fetch("http://localhost:3000/pedidosRecibidos", {
+      const data = await fetch("http://178.62.8.6:3000/pedidosRecibidos", {
         method: "GET",
         body: JSON.stringify(this.pedido)
       })

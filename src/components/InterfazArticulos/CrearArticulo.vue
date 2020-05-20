@@ -109,7 +109,7 @@ export default {
       const index = this.articulos.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
         this.articulos.splice(index, 1);
-      const Url = "http://localhost:3000/articulos/" + item._id;
+      const Url = "http://178.62.8.6:3000/articulos/" + item._id;
       fetch(Url, {
         method: "DELETE",
         body: JSON.stringify(this.item),
@@ -134,7 +134,7 @@ export default {
     save() {
       if (this.editedIndex > -1) {
         Object.assign(this.articulos[this.editedIndex], this.editedItem);
-        const Url = "http://localhost:3000/articulos/" + this.editedItem._id;
+        const Url = "http://178.62.8.6:3000/articulos/" + this.editedItem._id;
 
         fetch(Url, {
           method: "PUT",
@@ -145,7 +145,7 @@ export default {
           }
         });
       } else {
-        fetch("http://localhost:3000/articulos/", {
+        fetch("http://178.62.8.6:3000/articulos/", {
           method: "POST",
           body: JSON.stringify(this.editedItem),
           headers: {

@@ -19,7 +19,7 @@ export default {
       console.log(user);
       const envio = { nombre: this.nombre, usuario: user };
       console.log("enviado");
-      fetch("http://localhost:3000/empleados/", {
+      fetch("http://178.62.8.6:3000/empleados/", {
         method: "POST",
         body: JSON.stringify(envio),
         headers: {

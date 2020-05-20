@@ -220,7 +220,7 @@ export default {
       });
       if (this.editar) {
         let url =
-          "http://localhost:3000/pedidos/" + this.$route.params.parametro._id;
+          "http://178.62.8.6:3000/pedidos/" + this.$route.params.parametro._id;
         fetch(url, {
           method: "DELETE",
           body: JSON.stringify(this.pedido),
@@ -236,7 +236,7 @@ export default {
             })
           );
       }
-      fetch("http://localhost:3000/pedidos", {
+      fetch("http://178.62.8.6:3000/pedidos", {
         method: "POST",
         body: JSON.stringify(this.pedido),
         headers: {
