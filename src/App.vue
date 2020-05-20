@@ -80,12 +80,13 @@ export default {
     drawer: null
   }),
   methods: {
-    ...Vuex.mapMutations(["SetLogued"]),
+    ...Vuex.mapMutations("loginModule", ["SetLogued"]),
     logout() {
       firebase
         .auth()
         .signOut()
         .then(() => this.SetLogued(false))
+        .then(() => console.log(this.logued))
         .then(() => this.$router.replace("login"));
     }
   },

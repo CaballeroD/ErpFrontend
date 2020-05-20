@@ -7,7 +7,6 @@ import BotonInicioSesion from '@/components/Login/BotonInicioSesion'
 
 // Utilities
 import {
-  mount,
   createLocalVue,
   shallowMount
 } from '@vue/test-utils'

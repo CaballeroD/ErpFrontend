@@ -7,10 +7,11 @@ import Vuetify from "vuetify"
 
 Vue.use(Vuetify)
 
-
+//googlecloud
 const localVue = createLocalVue()
-
-
+//travis-->https://codecov.io/
+//chromedevtools-->audit
+//push--> descarga la imagen en docker hub y lo monte
 
 
 describe("ErrorUserLog.vue", () => {

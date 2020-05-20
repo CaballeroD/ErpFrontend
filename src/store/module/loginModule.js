@@ -3,12 +3,12 @@ export default {
     state: {
         usuario: "",
         contrasena: "",
+        logued: false,
         error: false
     },
     mutations: {
         SetLogued(state, val) {
             state.logued = val;
-
         },
         SetUsuario(state, val) {
             state.usuario = val
