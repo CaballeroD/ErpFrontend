@@ -269,7 +269,6 @@ export default {
     },
     close(item) {
       if (item.cantidad == "") item.cantidad = 0;
-      console.log("Dialog closed");
     },
     cancelPedido() {
       this.$router.push({
