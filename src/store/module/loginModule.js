@@ -18,7 +18,6 @@ export default {
         },
         SetError(state, val) {
             state.error = val
-            console.log(state.error)
         }
 
     },

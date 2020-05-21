@@ -67,8 +67,6 @@ export default {
       });
     },
     enviarPedido(item) {
-      console.log(item);
-      console.log("Enviar pedido");
       fetch("http://178.62.8.6:3000/pedidosRecibidos/", {
         method: "POST",
         body: JSON.stringify(item),
