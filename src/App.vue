@@ -86,7 +86,6 @@ export default {
         .auth()
         .signOut()
         .then(() => this.SetLogued(false))
-        .then(() => console.log(this.logued))
         .then(() => this.$router.replace("login"));
     }
   },

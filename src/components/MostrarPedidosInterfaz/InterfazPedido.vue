@@ -11,7 +11,7 @@
       class="windowSize"
     >
       <v-expansion-panel
-        v-for="(item,i) in this.InfoPedidosList"
+        v-for="(item, i) in this.InfoPedidosList"
         :key="i"
         class="justify-space-between"
       >
@@ -20,19 +20,23 @@
             <p>Pedido número: {{ i }}</p>
             <p>Fecha:{{ item.fecha }}</p>
             <p>Id:{{ item._id }}</p>
-            <v-icon small class="mr-2" @click="editPedido(item)">mdi-lead-pencil</v-icon>
-            <v-icon small @click="enviarPedido(item)">mdi-trash-can-outline</v-icon>
+            <v-icon small class="mr-2" @click="editPedido(item)"
+              >mdi-lead-pencil</v-icon
+            >
+            <v-icon small @click="enviarPedido(item)"
+              >mdi-trash-can-outline</v-icon
+            >
           </v-expansion-panel-header>
         </div>
         <v-expansion-panel-content>
           <div
             class="ma-2 d-inline-flex flex-column flex-wrap"
-            v-for="(aux,j) in item.articulosArray"
+            v-for="(aux, j) in item.articulosArray"
             :key="j"
           >
-            <span>Nombre: {{aux.nombre}}</span>
-            <span>Precio: {{aux.precio}}</span>
-            <span>Unidades: {{aux.cantidad}}</span>
+            <span>Nombre: {{ aux.nombre }}</span>
+            <span>Precio: {{ aux.precio }}</span>
+            <span>Unidades: {{ aux.cantidad }}</span>
           </div>
         </v-expansion-panel-content>
       </v-expansion-panel>

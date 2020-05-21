@@ -1,5 +1,11 @@
 <template>
-  <v-btn data-test="loginButtonTest" type="submit" color="primary" @click="login">Login</v-btn>
+  <v-btn
+    data-test="loginButtonTest"
+    type="submit"
+    color="primary"
+    @click="login"
+    >Login</v-btn
+  >
 </template>
 
 <script>

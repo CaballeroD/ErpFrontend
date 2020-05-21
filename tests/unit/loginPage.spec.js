@@ -1,38 +1,35 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
-import Vuex from 'vuex'
-import Vue from 'vue'
+import Vuex from "vuex";
+import Vue from "vue";
 import errorUserLog from "@/components/Login/ErrorUserLog.vue";
-import loginModule from "../../src/store/module/loginModule"
-import Vuetify from "vuetify"
+import loginModule from "../../src/store/module/loginModule";
+import Vuetify from "vuetify";
 
-Vue.use(Vuetify)
+Vue.use(Vuetify);
 
 //googlecloud
-const localVue = createLocalVue()
+const localVue = createLocalVue();
 //travis-->https://codecov.io/
 //chromedevtools-->audit
 //push--> descarga la imagen en docker hub y lo monte
 
-
 describe("ErrorUserLog.vue", () => {
-  it('establece los datos correctos por defecto', () => {
-    expect(typeof errorUserLog.data).toBe('function')
-    const defaultData = errorUserLog.data()
-    expect(defaultData.absolute).toBe(true)
-    expect(defaultData.overlay).toBe(true)
-    expect(defaultData.zIndex).toBe(1)
-  })
+  it("establece los datos correctos por defecto", () => {
+    expect(typeof errorUserLog.data).toBe("function");
+    const defaultData = errorUserLog.data();
+    expect(defaultData.absolute).toBe(true);
+    expect(defaultData.overlay).toBe(true);
+    expect(defaultData.zIndex).toBe(1);
+  });
 });
 
 describe("ErrorUserLog.vue render", () => {
-  let actions
-  let state
-  let store
-  let vuetify
+  let actions;
+  let store;
 
   beforeEach(() => {
-    localVue.use(Vuex)
-    localVue.use(Vuetify)
+    localVue.use(Vuex);
+    localVue.use(Vuetify);
     store = new Vuex.Store({
       modules: {
         loginModule: {
@@ -46,12 +43,14 @@ describe("ErrorUserLog.vue render", () => {
           getters: loginModule.getters
         }
       }
-    })
-  })
-  it('se ha montado correctamente', () => {
-    const wrapper = shallowMount(errorUserLog, { store, localVue })
+    });
+  });
+  it("se ha montado correctamente", () => {
+    const wrapper = shallowMount(errorUserLog, { store, localVue });
     //expect(wrapper.html()).toMatchSnapshot()
-    const texto = wrapper.find('p')
-    expect(texto.text()).toBe("El usuario o contraseña ingresada no es correcta.Por favor, inténtelo de nuevo.")
-  })
+    const texto = wrapper.find("p");
+    expect(texto.text()).toBe(
+      "El usuario o contraseña ingresada no es correcta.Por favor, inténtelo de nuevo."
+    );
+  });
 });

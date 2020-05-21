@@ -11,7 +11,7 @@
         :readonly="readonly"
         class="tam"
       >
-        <v-expansion-panel v-for="(item,i) in this.pedidosRecibidos" :key="i">
+        <v-expansion-panel v-for="(item, i) in this.pedidosRecibidos" :key="i">
           <v-expansion-panel-header class="d-flex tam">
             <p>Pedido número: {{ i }}</p>
             <p>Fecha:{{ item.fecha }}</p>
@@ -27,12 +27,12 @@
           <v-expansion-panel-content>
             <div
               class="ma-2 d-inline-flex flex-column flex-wrap"
-              v-for="(aux,j) in item.articulosArray"
+              v-for="(aux, j) in item.articulosArray"
               :key="j"
             >
-              <span>Nombre: {{aux.nombre}}</span>
-              <span>Precio: {{aux.precio}}</span>
-              <span>Unidades: {{aux.cantidad}}</span>
+              <span>Nombre: {{ aux.nombre }}</span>
+              <span>Precio: {{ aux.precio }}</span>
+              <span>Unidades: {{ aux.cantidad }}</span>
             </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -40,12 +40,21 @@
     </v-row>
     <v-dialog v-model="dialog" persistent max-width="290" v-if="dialog">
       <v-card>
-        <v-card-title class="headline">Use Google's location service?</v-card-title>
-        <v-card-text>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</v-card-text>
+        <v-card-title class="headline"
+          >Use Google's location service?</v-card-title
+        >
+        <v-card-text
+          >Let Google help apps determine location. This means sending anonymous
+          location data to Google, even when no apps are running.</v-card-text
+        >
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="dialogCancel">Disagree</v-btn>
-          <v-btn color="green darken-1" text @click="dialogConfirm">Agree</v-btn>
+          <v-btn color="green darken-1" text @click="dialogCancel"
+            >Disagree</v-btn
+          >
+          <v-btn color="green darken-1" text @click="dialogConfirm"
+            >Agree</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -142,7 +151,7 @@ export default {
   }
 };
 </script>
-<style  scoped>
+<style scoped>
 .tam {
   height: 63px;
   padding-top: 0px;

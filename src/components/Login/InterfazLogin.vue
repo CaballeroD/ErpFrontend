@@ -41,7 +41,6 @@
   </v-app>
 </template>
 
-
 <script>
 import Vue from "vue";
 import Vuex, { mapState } from "vuex";
@@ -74,4 +73,3 @@ export default {
   }
 };
 </script>
-

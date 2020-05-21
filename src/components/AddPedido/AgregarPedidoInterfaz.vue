@@ -18,7 +18,7 @@
           :items="articulos"
           :search="search"
           item-key="name"
-          :sort-by="['proveedor','nombre','precio']"
+          :sort-by="['proveedor', 'nombre', 'precio']"
           :sort-desc="[false, false, false]"
           multi-sort
         >
@@ -74,7 +74,7 @@
           :items="articulos"
           :search="search"
           item-key="name"
-          :sort-by="['proveedor','nombre','precio']"
+          :sort-by="['proveedor', 'nombre', 'precio']"
           :sort-desc="[false, false, false]"
           multi-sort
         >
