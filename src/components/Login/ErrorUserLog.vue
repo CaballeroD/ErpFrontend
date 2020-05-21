@@ -1,3 +1,4 @@
+
 <template>
   <v-row v-if="this.error" align="center" justify="center">
     <v-overlay :absolute="absolute" :value="overlay" :opacity="opacity" :z-index="zIndex">
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import Vue from "vue";
 import Vuex, { mapState } from "vuex";
 
