@@ -49,8 +49,6 @@ describe("ErrorUserLog.vue render", () => {
     const wrapper = shallowMount(errorUserLog, { store, localVue });
     //expect(wrapper.html()).toMatchSnapshot()
     const texto = wrapper.find("p");
-    expect(texto.text()).toBe(
-      "El usuario o contraseña ingresada no es correcta.Por favor, inténtelo de nuevo."
-    );
+    expect(texto.text()).toBe("El usuario o contraseña ingresada no es correcta.Por favor, inténtelo de nuevo.");
   });
 });
