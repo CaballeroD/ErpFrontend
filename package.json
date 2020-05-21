@@ -10,7 +10,8 @@
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "cypress": "cypress open",
-    "test:unit:prueba": "vue-cli-service test:unit --watch --setupTestFrameworkScriptFile=./tests/setup.js"
+    "test:unit:prueba": "vue-cli-service test:unit --watch --setupTestFrameworkScriptFile=./tests/setup.js",
+    "test:unit:travis": "vue-cli-service test:unit --setupTestFrameworkScriptFile=./tests/setup.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
