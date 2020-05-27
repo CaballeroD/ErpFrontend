@@ -10,7 +10,7 @@
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "cypress": "cypress open",
-    "test:unit:prueba": "vue-cli-service test:unit --watch --setupTestFrameworkScriptFile=./tests/setup.js",
+    "test:unit:prueba": "vue-cli-service test:unit --setupTestFrameworkScriptFile=./tests/setup.js",
     "test:unit:travis": "vue-cli-service test:unit --setupTestFrameworkScriptFile=./tests/setup.js"
   },
   "dependencies": {
@@ -35,6 +35,7 @@
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.1.0",
+    "codecov": "^3.7.0",
     "cypress": "^4.6.0",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.3",
