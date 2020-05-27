@@ -3,7 +3,7 @@ node_js: "12"
 install:
   - npm install -g codecov
 script:
-  - "coverage run test:unit:travis"
+  - "npm run test:unit:travis"
   - "npm run build"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
