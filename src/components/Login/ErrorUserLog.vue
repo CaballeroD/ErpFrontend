@@ -16,7 +16,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 import Vue from "vue";
 import Vuex, { mapState } from "vuex";
 

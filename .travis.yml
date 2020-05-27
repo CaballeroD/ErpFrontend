@@ -1,5 +1,9 @@
 language: node_js
 node_js: "12"
+before_install:
+  - npm install coverage
 script:
-  - "npm run test:unit:travis"
+  - "coverage run test:unit:travis"
   - "npm run build"
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
