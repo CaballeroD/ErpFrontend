@@ -1,10 +1,10 @@
 language: node_js
 node_js: "12"
 install:
+  - "npm install"
   - npm install -g codecov
 script:
   - "npm run test:unit:travis"
-  - "npm install"
   - "npm run build"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
