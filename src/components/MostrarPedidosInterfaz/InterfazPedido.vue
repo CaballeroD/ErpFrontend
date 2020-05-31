@@ -20,12 +20,8 @@
             <p>Pedido número: {{ i }}</p>
             <p>Fecha:{{ item.fecha }}</p>
             <p>Id:{{ item._id }}</p>
-            <v-icon small class="mr-2" @click="editPedido(item)"
-              >mdi-lead-pencil</v-icon
-            >
-            <v-icon small @click="enviarPedido(item)"
-              >mdi-trash-can-outline</v-icon
-            >
+            <v-icon small class="mr-2" @click="editPedido(item)">mdi-lead-pencil</v-icon>
+            <v-icon small @click="enviarPedido(item)">mdi-trash-can-outline</v-icon>
           </v-expansion-panel-header>
         </div>
         <v-expansion-panel-content>
@@ -71,7 +67,8 @@ export default {
       });
     },
     enviarPedido(item) {
-      fetch("http://178.62.8.6:3000/pedidosRecibidos/", {
+      let url = process.env.VUE_APP_URL_LOCALHOST + "/pedidosRecibidos/";
+      fetch(url, {
         method: "POST",
         body: JSON.stringify(item),
         headers: {
@@ -79,7 +76,7 @@ export default {
           "Content-type": "application/json"
         }
       });
-      let url = "http://178.62.8.6:3000/pedidos/" + item._id;
+      url = process.env.VUE_APP_URL_LOCALHOST + "/pedidos/" + item._id;
       fetch(url, {
         method: "DELETE",
         body: JSON.stringify(this.pedido),

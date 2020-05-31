@@ -70,6 +70,7 @@
 import Vue from "vue";
 import Vuex, { mapState } from "vuex";
 import firebase from "firebase";
+require("dotenv").config();
 
 Vue.use(Vuex);
 

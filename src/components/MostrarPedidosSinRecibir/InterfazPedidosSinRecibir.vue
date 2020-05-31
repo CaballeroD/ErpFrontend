@@ -40,21 +40,15 @@
     </v-row>
     <v-dialog v-model="dialog" persistent max-width="290" v-if="dialog">
       <v-card>
-        <v-card-title class="headline"
-          >Use Google's location service?</v-card-title
-        >
-        <v-card-text
-          >Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.</v-card-text
-        >
+        <v-card-title class="headline">Use Google's location service?</v-card-title>
+        <v-card-text>
+          Let Google help apps determine location. This means sending anonymous
+          location data to Google, even when no apps are running.
+        </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="dialogCancel"
-            >Disagree</v-btn
-          >
-          <v-btn color="green darken-1" text @click="dialogConfirm"
-            >Agree</v-btn
-          >
+          <v-btn color="green darken-1" text @click="dialogCancel">Disagree</v-btn>
+          <v-btn color="green darken-1" text @click="dialogConfirm">Agree</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -96,7 +90,7 @@ export default {
       this.dialog = false;
       this.openSnack(true, "success", "Se ha confirmado la selección");
       let url =
-        "http://178.62.8.6:3000/pedidosRecibidos/" +
+        "process.env.VUE_APP_URL_LOCALHOST/pedidosRecibidos/" +
         this.pedidoSeleccionado._id;
       fetch(url, {
         method: "DELETE",
@@ -106,7 +100,7 @@ export default {
           "Content-type": "application/json"
         }
       }).then(res => res.json());
-      fetch("http://178.62.8.6:3000/pedidosArchivados/", {
+      fetch("process.env.VUE_APP_URL_LOCALHOST/pedidosArchivados/", {
         method: "POST",
         body: JSON.stringify(this.pedidoSeleccionado),
         headers: {

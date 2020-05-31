@@ -17,7 +17,7 @@ export default {
     Send() {
       const user = firebase.auth().currentUser.email;
       const envio = { nombre: this.nombre, usuario: user };
-      fetch("http://178.62.8.6:3000/empleados/", {
+      fetch("process.env.VUE_APP_URL_LOCALHOST/empleados/", {
         method: "POST",
         body: JSON.stringify(envio),
         headers: {

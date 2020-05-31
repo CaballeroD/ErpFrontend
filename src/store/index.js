@@ -26,24 +26,27 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    obtenerArticulos: async function({ commit }) {
-      const data = await fetch("http://178.62.8.6:3000/articulos", {
+    obtenerArticulos: async function ({ commit }) {
+      let url = process.env.VUE_APP_URL_LOCALHOST + "/articulos"
+      const data = await fetch(url, {
         method: "GET",
         body: JSON.stringify(this.articulo)
       });
       const articulos = await data.json();
       commit("fillArticulos", articulos);
     },
-    obtenerInfoPedidosList: async function({ commit }) {
-      const data = await fetch("http://178.62.8.6:3000/pedidos", {
+    obtenerInfoPedidosList: async function ({ commit }) {
+      let url = process.env.VUE_APP_URL_LOCALHOST + "/pedidos"
+      const data = await fetch(url, {
         method: "GET",
         body: JSON.stringify(this.pedido)
       });
       const pedidos = await data.json();
       commit("fillInfoPedidosList", pedidos);
     },
-    obtenerPedidosNoRecibidosList: async function({ commit }) {
-      const data = await fetch("http://178.62.8.6:3000/pedidosRecibidos", {
+    obtenerPedidosNoRecibidosList: async function ({ commit }) {
+      let url = process.env.VUE_APP_URL_LOCALHOST + "/pedidosRecibidos"
+      const data = await fetch(url, {
         method: "GET",
         body: JSON.stringify(this.pedido)
       });
