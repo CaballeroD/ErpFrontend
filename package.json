@@ -19,6 +19,7 @@
     "dotenv": "^8.2.0",
     "firebase": "^7.14.4",
     "lodash": "^4.17.15",
+    "travis": "^0.1.1",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.5",
     "vue-router": "^3.2.0",
