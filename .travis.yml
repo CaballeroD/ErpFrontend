@@ -15,7 +15,7 @@ after_success:
 - bash scripts/deploy.sh
 env:
 - global:
-  - REMOTE_PATH=/data/www/dist
+  - REMOTE_PATH=/data/www/
   - REMOTE_USER=deploy_user
   - REMOTE_HOST=178.62.8.6
 - CODECOV_TOKEN="83d8b72d-1645-4184-990c-fe18f85a6314"
