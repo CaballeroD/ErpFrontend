@@ -15,7 +15,7 @@
             <v-icon>mdi-briefcase-check</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Pedidos RecibidosEstasiquesi</v-list-item-title>
+            <v-list-item-title>Pedidos RecibidosLetsgo</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link to="/agregarPedido">
