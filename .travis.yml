@@ -1,15 +1,21 @@
 language: node_js
-language: node_js
-node_js: "12"
+node_js: '12'
 services:
-  - docker
+- docker
 install:
-  - npm install
-  - npm install -g codecov
+- npm install
+- npm install -g codecov
+before_install:
+- bash scripts/install.sh
 script:
-  - "npm run test:unit:travis"
-  - "npm run build"
+- npm run test:unit:travis
+- npm run build
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+- bash scripts/deploy.sh
 env:
-  - CODECOV_TOKEN="83d8b72d-1645-4184-990c-fe18f85a6314"
+- global:
+  - REMOTE_PATH=/data/www/dist
+  - REMOTE_USER=deploy_user
+  - REMOTE_HOST=178.62.8.6
+- CODECOV_TOKEN="83d8b72d-1645-4184-990c-fe18f85a6314"
