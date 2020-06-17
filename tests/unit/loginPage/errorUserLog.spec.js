@@ -51,6 +51,5 @@ describe("ErrorUserLog.vue render", () => {
   it("función changeError bien inicializada", () => {
     const wrapper = shallowMount(errorUserLog, { store, localVue });
     expect(typeof errorUserLog.methods.changeError).toBe('function')
-    console.log(errorUserLog.methods.changeError)
   });
 });

@@ -25,7 +25,7 @@ describe("CustomCard.vue", () => {
     });
   });
 
-  it("should have a custom title and match snapshot", () => {
+  it("should have a custom title", () => {
     const wrapper = shallowMount(BotonInicioSesion, {
       localVue
     });
@@ -37,6 +37,14 @@ describe("CustomCard.vue", () => {
       localVue
     });
     expect(typeof BotonInicioSesion.methods.login).toBe('function')
+  });
+  it("establece los datos correctos por defecto", () => {
+    expect(typeof BotonInicioSesion.data).toBe("function");
+    expect(typeof BotonInicioSesion.methods).toBe("object");
+    expect(typeof BotonInicioSesion.computed).toBe("object");
+    const defaultData = BotonInicioSesion.data();
+    expect(defaultData.absolute).toBe(true);
+    expect(defaultData.overlay).toBe(false);
   });
 
 });
