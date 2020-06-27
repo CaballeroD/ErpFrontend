@@ -220,7 +220,8 @@ export default {
       });
       if (this.editar) {
         let url =
-          "process.env.VUE_APP_URL_LOCALHOST/pedidos/" +
+          process.env.VUE_APP_URL_LOCALHOST +
+          "/pedidos/" +
           this.$route.params.parametro._id;
         fetch(url, {
           method: "DELETE",
@@ -237,7 +238,8 @@ export default {
             })
           );
       }
-      fetch("process.env.VUE_APP_URL_LOCALHOST/pedidos", {
+      let url = process.env.VUE_APP_URL_LOCALHOST + "/pedidos/";
+      fetch(url, {
         method: "POST",
         body: JSON.stringify(this.pedido),
         headers: {
