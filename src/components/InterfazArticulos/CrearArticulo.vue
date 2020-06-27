@@ -58,7 +58,7 @@ export default {
     dialog: false,
     headers: [
       {
-        text: "Artículos",
+        text: "Artículos cambiados",
         align: "start",
         sortable: false,
         value: "nombre"
