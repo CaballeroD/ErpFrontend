@@ -110,8 +110,8 @@ export default {
       confirm("Are you sure you want to delete this item?") &&
         this.articulos.splice(index, 1);
 
-      let Url = process.env.VUE_APP_URL_LOCALHOST + "/articulos/" + item._id;
-      fetch(Url, {
+      let url = process.env.VUE_APP_URL_LOCALHOST + "/articulos/" + item._id;
+      fetch(url, {
         method: "DELETE",
         body: JSON.stringify(this.item),
         headers: {
@@ -135,12 +135,12 @@ export default {
     save() {
       if (this.editedIndex > -1) {
         Object.assign(this.articulos[this.editedIndex], this.editedItem);
-        let Url =
+        let url =
           process.env.VUE_APP_URL_LOCALHOST +
           "/articulos/" +
           this.editedItem._id;
 
-        fetch(Url, {
+        fetch(url, {
           method: "PUT",
           body: JSON.stringify(this.editedItem),
           headers: {
@@ -149,8 +149,8 @@ export default {
           }
         });
       } else {
-        let Url = process.env.VUE_APP_URL_LOCALHOST + "/articulos/";
-        fetch(Url, {
+        let url = process.env.VUE_APP_URL_LOCALHOST + "/articulos/";
+        fetch(url, {
           method: "POST",
           body: JSON.stringify(this.editedItem),
           headers: {
