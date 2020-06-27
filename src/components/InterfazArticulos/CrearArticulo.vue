@@ -110,7 +110,7 @@ export default {
       confirm("Are you sure you want to delete this item?") &&
         this.articulos.splice(index, 1);
 
-      const Url = "process.env.VUE_APP_URL_LOCALHOST/articulos/" + item._id;
+      const Url = "http://178.62.8.6/articulos/" + item._id;
       fetch(Url, {
         method: "DELETE",
         body: JSON.stringify(this.item),
@@ -135,8 +135,7 @@ export default {
     save() {
       if (this.editedIndex > -1) {
         Object.assign(this.articulos[this.editedIndex], this.editedItem);
-        const Url =
-          "process.env.VUE_APP_URL_LOCALHOST/articulos/" + this.editedItem._id;
+        const Url = "http://178.62.8.6/articulos/" + this.editedItem._id;
 
         fetch(Url, {
           method: "PUT",
@@ -147,7 +146,7 @@ export default {
           }
         });
       } else {
-        fetch("process.env.VUE_APP_URL_LOCALHOST/articulos/", {
+        fetch("http://178.62.8.6/articulos/", {
           method: "POST",
           body: JSON.stringify(this.editedItem),
           headers: {
