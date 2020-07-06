@@ -59,7 +59,7 @@
     <div v-else>
       <v-card>
         <v-card-title>
-          Artículos editando
+          Editando Pedido
           <v-spacer></v-spacer>
           <v-text-field
             v-model="search"
