@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     articulosArrayApi: [],
-    //creo que esto sobra
+    //Revisar estados para los anteriores componentes
     comboBoxSelectedArticulos: [],
     InfoPedidosList: [],
     NoRecibidosList: []
