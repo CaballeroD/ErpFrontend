@@ -17,7 +17,7 @@
       >
         <div class="windowSizeHeader">
           <v-expansion-panel-header class="d-inline-flex justify-space-between">
-            <p>Pedido número: {{ i }}</p>
+            <p>Pedido nº: {{ i }}</p>
             <p>Fecha:{{ item.fecha }}</p>
             <p>Id:{{ item._id }}</p>
             <v-icon small class="mr-2" @click="editPedido(item)">mdi-lead-pencil</v-icon>
