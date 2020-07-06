@@ -19,7 +19,6 @@
           <v-expansion-panel-header class="d-inline-flex justify-space-between">
             <p>Pedido nº: {{ i }}</p>
             <p>Fecha:{{ item.fecha }}</p>
-            <p>Id:{{ item._id }}</p>
             <v-icon small class="mr-2" @click="editPedido(item)">mdi-lead-pencil</v-icon>
             <v-icon small @click="enviarPedido(item)">mdi-rocket-launch-outline</v-icon>
           </v-expansion-panel-header>
