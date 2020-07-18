@@ -40,15 +40,12 @@
     </v-row>
     <v-dialog v-model="dialog" persistent max-width="290" v-if="dialog">
       <v-card>
-        <v-card-title class="headline">Use Google's location service?</v-card-title>
-        <v-card-text>
-          Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.
-        </v-card-text>
+        <v-card-title class="headline">¿Estás seguro de querer archivar el pedido?</v-card-title>
+        <v-card-text>Una vez realices esta acción no podrás volver a acceder a este pedido.</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="dialogCancel">Disagree</v-btn>
-          <v-btn color="green darken-1" text @click="dialogConfirm">Agree</v-btn>
+          <v-btn color="green darken-1" text @click="dialogCancel">Rechazar</v-btn>
+          <v-btn color="green darken-1" text @click="dialogConfirm">Aceptar</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

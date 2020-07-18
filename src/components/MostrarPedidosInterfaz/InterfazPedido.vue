@@ -19,8 +19,12 @@
           <v-expansion-panel-header class="d-inline-flex justify-space-between">
             <p>Pedido nº: {{ i }}</p>
             <p>Fecha:{{ item.fecha }}</p>
-            <v-icon small class="mr-2" @click="editPedido(item)">mdi-lead-pencil</v-icon>
-            <v-icon small @click="enviarPedido(item)">mdi-rocket-launch-outline</v-icon>
+            <p>
+              <v-icon small class="mr-2" @click="editPedido(item)">mdi-lead-pencil</v-icon>
+            </p>
+            <p>
+              <v-icon small @click="enviarPedido(item)">mdi-rocket-launch-outline</v-icon>
+            </p>
           </v-expansion-panel-header>
         </div>
         <v-expansion-panel-content>
