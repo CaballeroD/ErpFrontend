@@ -17,15 +17,12 @@ export default {
   methods: {
     ...Vuex.mapMutations("loginModule", ["SetLogued", "SetError"]),
     login() {
-      console.log(this.logued);
       firebase
         .auth()
         .signInWithEmailAndPassword(this.usuario, this.contrasena)
         .then(() => this.SetLogued(true))
         .then(() => this.$router.replace("MostrarPedidos"))
-        .catch(function(error) {
-          console.log("estoy dentro del catch"), console.log(error);
-        })
+        .catch(function(error) {})
         .then(() => this.SetError(true));
     }
   },
