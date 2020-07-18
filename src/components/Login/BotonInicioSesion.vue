@@ -22,7 +22,9 @@ export default {
         .signInWithEmailAndPassword(this.usuario, this.contrasena)
         .then(() => this.SetLogued(true))
         .then(() => this.$router.replace("MostrarPedidos"))
-        .catch(function(error) {})
+        .catch(function(error) {
+          console.log(error);
+        })
         .then(() => this.SetError(true));
     }
   },
