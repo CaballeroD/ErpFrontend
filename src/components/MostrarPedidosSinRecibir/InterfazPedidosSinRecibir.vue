@@ -87,7 +87,8 @@ export default {
       this.dialog = false;
       this.openSnack(true, "success", "Se ha confirmado la selección");
       let url =
-        "process.env.VUE_APP_URL_LOCALHOST/pedidosRecibidos/" +
+        process.env.VUE_APP_URL_LOCALHOST +
+        "/pedidosRecibidos/" +
         this.pedidoSeleccionado._id;
       fetch(url, {
         method: "DELETE",
@@ -97,7 +98,7 @@ export default {
           "Content-type": "application/json"
         }
       }).then(res => res.json());
-      fetch("process.env.VUE_APP_URL_LOCALHOST/pedidosArchivados/", {
+      fetch(process.env.VUE_APP_URL_LOCALHOST + "/pedidosArchivados/", {
         method: "POST",
         body: JSON.stringify(this.pedidoSeleccionado),
         headers: {
