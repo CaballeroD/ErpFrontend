@@ -38,7 +38,7 @@
         </v-expansion-panel>
       </v-expansion-panels>
     </v-row>
-    <v-dialog v-model="dialog" persistent max-width="290" v-if="dialog">
+    <v-dialog v-model="dialog" persistent max-width="320" v-if="dialog">
       <v-card>
         <v-card-title class="headline">¿Estás seguro de querer archivar el pedido?</v-card-title>
         <v-card-text>Una vez realices esta acción no podrás volver a acceder a este pedido.</v-card-text>
