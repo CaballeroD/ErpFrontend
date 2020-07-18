@@ -17,7 +17,9 @@ export default {
       state.contrasena = val;
     },
     SetError(state, val) {
+      console.log("anterior valor de error    " + state.error)
       state.error = val;
+      console.log("futuro valor de error    " + state.error)
     }
   },
   actions: {},
