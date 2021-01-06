@@ -14,7 +14,7 @@
     "test:unit:travis": "vue-cli-service test:unit --setupTestFrameworkScriptFile=./tests/setup.js"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
     "firebase": "^7.14.4",
